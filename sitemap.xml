@@ -5,15 +5,15 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 	<url>
-		<loc>https://calliope.github.io/</loc>
+		<loc>https://cyverse-gis.github.io/</loc>
 	</url>
 	<url>
-		<loc>https://calliope.github.io/about</loc>
+		<loc>https://cyverse-gis.github.io/about</loc>
 	</url>
 	<url>
-		<loc>https://calliope.github.io/documentation</loc>
+		<loc>https://cyverse-gis.github.io/documentation</loc>
 	</url>
 	<url>
-		<loc>https://hcwhosted.github.io/faq</loc>
+		<loc>https://cyverse-gis.github.io/faq</loc>
 	</url>
 </urlset>
