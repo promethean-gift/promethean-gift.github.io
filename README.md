@@ -6,8 +6,8 @@ Bootstrap github.io website for Calliope Project
 
 To run locally:
 ```
-git clone https://github.com/cyverse-gis/calliope.github.io.git
-cd calliope.github.io
+git clone https://github.com/cyverse-gis/cyverse-gis.github.io.git
+cd cyverse-gis.github.io
 npm install
 npm run serve
 ```
