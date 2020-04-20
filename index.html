@@ -2,21 +2,44 @@
 <html lang="en">
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162379039-1"></script>-->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Calliope</title>
+
+  <!-- begin favicon block -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- end favicon block -->
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="style/bootstrap.css" />
+  <link rel="stylesheet/less" type="text/css" href="style/index.less">
+  <script src="node_modules/d3/dist/d3.min.js"></script>
+  <script type="text/javascript" src="node_modules/less/dist/less.min.js" data-log-level="1"></script>
+  <script src="https://kit.fontawesome.com/f2d2b39d62.js" crossorigin="anonymous"></script>
+  <script type="module" src="controllers/VanillaController.js"></script>
+
   <style>
-body, html {
+  body, html {
   height: 100%;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.jumbotron { min-height: 500px; 
-}
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/sonoran_wash.png");
-  height: 30%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/sonoran_wash.jpg");
+  height: 40%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,37 +71,7 @@ body, html {
   color: white;
 }
 </style>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'UA-162379039-1');
-  </script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Calliope</title>
-
-  <!-- begin favicon block -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/assets/favicon/site.webmanifest">
-  <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <!-- end favicon block -->
-
-  <script src="node_modules/d3/dist/d3.min.js"></script>
-  <link rel="stylesheet" href="style/bootstrap.css" />
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <link rel="stylesheet/less" type="text/css" href="style/index.less">
-  <script type="text/javascript" src="node_modules/less/dist/less.min.js" data-log-level="1"></script>
-  <script src="https://kit.fontawesome.com/f2d2b39d62.js" crossorigin="anonymous"></script>
-  <script type="module" src="controllers/VanillaController.js"></script>
 </head>
 
 <body>
@@ -94,10 +87,10 @@ body, html {
     <div class="container">
       <div class="row">
         <div class="col">
-          <p class="text-justify"><strong>Calliope</strong> is an open-source software project to ingest imagery and other data from small unmanned aerial systems (sUAS) into the <a href="https://cyverse.org"> CyVerse</a> Data Store for use in life and earth science research.</p>
+          <p class="text-justify"><strong>Calliope</strong> is an open-source software project to ingest imagery and other data from small unmanned aerial systems (sUAS) into <a href="https://cyverse.org"> CyVerse</a> for (re)use in life and earth science research.</p>
         </div>
         <div class="col">
-          <p class="text-justify">Calliope is written in <a href= "https://www.java.com/en/download/"><i class="fab fa-java padding-right" aria-hidden="true"></i> Java</a> and can be run on any PC platform.</p>       
+          <p class="text-justify">Written in <a href= "https://www.java.com/en/download/"><i class="fab fa-java padding-right" aria-hidden="true"></i> Java</a> it can be run on any PC Operating System (Windows, Mac OS X, & Linux).</p>       
             <hr/></p>
           </div>
         </div>
