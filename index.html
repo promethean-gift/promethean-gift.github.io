@@ -16,7 +16,7 @@ body, html {
 
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/sonoran_wash.png");
-  height: 50%;
+  height: 30%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,7 +26,7 @@ body, html {
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -83,31 +83,28 @@ body, html {
 
 <body>
   <header></header>
-  <main role="main">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="hero-image">
-      <div class="container mt-3">
-        <p></p>
-        <img src="/assets/calliope-logo-white.svg" alt="a bird and the name"/>
+  <div class="hero-image">
+    <main role="main">
+      <div class="hero-text">
+        <img src="assets/calliope-logo-white.svg" alt="a bird and the name"/>
         <div class="hero-text"></div>
         <h3 class="display-4"></h3>
       </div>
     </div>
     <div class="container">
-      <div class="col-12">
-        <p class="lead">Project Calliope</p>
-        <p class="text-justify"><strong>Calliope</strong> is an open-source software project to ingest imagery and other data from small unmanned aerial systems (sUAS) into the <a href="https://cyverse.org"> CyVerse</a> Data Store for use in life and earth science research.</p>
-        <hr/>
-        <p class="text-justify">Calliope is written in <a href= "https://www.java.com/en/download/"><i class="fab fa-java padding-right" aria-hidden="true"></i> Java</a> and can be run on any PC platform.</p> 
-        
-        <div class="col-md-auto text-center">
-        <p><a class="btn btn-primary btn-lg m-3" href="https://data.cyverse.org/dav-anon/iplant/home/shared/aes/calliope/Calliope-1.0-SNAPSHOT-jar-with-dependencies.jar" role="button" target="_blank">Download Java JAR &raquo;</a>
-        <hr/>
-     
+      <div class="row">
+        <div class="col">
+          <p class="text-justify"><strong>Calliope</strong> is an open-source software project to ingest imagery and other data from small unmanned aerial systems (sUAS) into the <a href="https://cyverse.org"> CyVerse</a> Data Store for use in life and earth science research.</p>
         </div>
+        <div class="col">
+          <p class="text-justify">Calliope is written in <a href= "https://www.java.com/en/download/"><i class="fab fa-java padding-right" aria-hidden="true"></i> Java</a> and can be run on any PC platform.</p>       
+            <hr/></p>
+          </div>
+        </div>
+        <div class="col-md-auto text-center">
+            <p><a class="btn btn-primary btn-lg m-3" href="https://data.cyverse.org/dav-anon/iplant/home/shared/aes/calliope/Calliope-1.0-SNAPSHOT-jar-with-dependencies.jar" role="button" target="_blank">Download Java JAR &raquo;</a>
+      </div>
 
- 
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4 col-sm-12" align="center"><a class="noUL" href="about">

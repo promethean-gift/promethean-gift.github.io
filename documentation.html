@@ -14,7 +14,7 @@ body, html {
 }
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("assets/cyverse_globe_cmyk.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("assets/cienega_ranch.png");
   height: 20%;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@ body, html {
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -84,33 +84,90 @@ body, html {
 
 <body>
     <header></header>
-<div class="hero-image">
+  <div class="hero-image">
     <main role="main">
       <div class="hero-text">
-        <img src="assets/calliope-logo.svg" alt="a bird and the name"/>
-        <div class="hero-text"></div>
-        <h3 class="display-4"></h3>
+        <img src="assets/calliope-logo-white.svg" alt="bird"/>
+      </div>
+  </div>
+  <div class="container">
+      <h1>User Manual </h1>
+          <p class="lead">There are several possible ways to run Calliope. Below we provide instructions for installation of any software dependencies. 
+          </p>  
+    </div>
+  <div class="container">
+    <h2>Dependencies</h2>
+    <p class="lead">To start the Calliope GUI you will need to install a couple of software dependencies.</p>
+    <div class="row"> 
+      <div class="col">
+        <a href="https://www.oracle.com/java/technologies/javase-downloads.html"target="_blank"><h4><i class="fab fa-java"></i> Java SE 8u251 & JavaFX </h4></a>
+        <p class="lead">JavaFX comes bundled with Java 8. We recommended that you use the latest Java 8.</p> 
+        <p class="lead">Note: If you are using OpenJDK instead of Oracle's JDK, you will also need <a href="http://openjdk.java.net/projects/openjfx/" target="_blank">OpenJFX<a>.</p>
+        
+        <p class="lead">If you're installing Java 8 onto a Mac OS X, you'll need to set the alias:</p>
+
+        <pre><code>alias j8="export JAVA_HOME=`/usr/libexec/java_home </code></pre> 
+        <pre><code>-v 1.8`java -version" j8</code></pre>
+      </div>
+      <div class="col">
+        <a href="https://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank"><h4>ExifTool</h4></a>
+            <p class="lead">ExifTool must be accessible in your system <code>$PATH</code> environment variable. Calliope will run without ExifTool so you can check if you have successfully installed ExifTool by launching Calliope and going to the settings tab. If the text at the bottom reads <code>ExifTool Installation Status: Found</code> you are good to go. If the text at the bottom reads <code>ExifTool Installation Status: Not Found</code> follow the instructions at the bottom of the settings tab to install ExifTool on your system. If you attempt to import images without having ExifTool installed you will be prompted to install ExifTool first.</p>
       </div>
     </div>
-    <div class="container">
-      <div class="col-12">
-        <h2 class="display-4">User Manual </h2>
-        <div class="container">
-          <p>text</p>
+        <hr>
+      <div class="container">
+        <h2>Installation</h2>
+        <div class="row">
+        <div class="col">
+          <h3>Run Java natively <i class="fab fa-java"></i></h3>
+          <p class="lead"> We have hosted a pre-built Java <a href="https://data.cyverse.org/dav-anon/iplant/home/shared/aes/calliope/Calliope-1.0-SNAPSHOT-jar-with-dependencies.jar">JAR image</a> on CyVerse. After you've installed Java 8 and ExifTool, you can download the program and run it from a command line:</p>
+          <pre><code>java -jar Calliope-1.0-SNAPSHOT-jar-with-dependencies.jar</code></pre>
         </div>
+        <div class="col">
+          <h3>Running with Docker <i class="fab fa-docker"></i></h3>
+          <p class="lead">The latest version of the build is also hosted on the Docker Hub. By running with <a href="hub.docker.com/u/cyverse-gis/calliope" target="_blank">Docker</a>, you can avoid installing Java 8 on your system.
+          </p>
+          <pre><code>git pull cyverse-gis/calliope:latest</code></pre>
+          <pre><code>docker run -it -p 9200:9200 cyverse-gis/calliope:latest</code></pre>
+        </div>
+        <div class="col">
+          <h3>Build from Source <i class="fab fa-github"></i></h3>
+          <p class="lead">The code is hosted on <a href="https://github.com/cyverse-gis/suas-metadata" target="_blank">GitHub</a>, and can be pulled and built from source.</p>
 
-        <h2 class="display-4">Developer Documentation </h2>
+          <pre><code>git clone https://github.com/cyverse-gis/suas-metadata</code></code></pre>
+          <pre><code>cd suas-metadata/Calliope</code></pre>
+          <pre><code>mvn -U compile package</code></pre>
+
+        </div>
+      </div>
+    </div>
+  <hr>
+    <div class="container">
+      <div class="col">
+        <div class="row">
+          <h3>Logging into Calliope via CyVerse</h3>
+          <p class="lead">The CyVerse infrastructure is heavily used by Calliope to both store data and authenticate users. In order to use Calliope, you will need a CyVerse account. Please <a href="https://user.cyverse.org/register" target="_blank">register for a free account</a> before trying to log into Calliope.</p> 
+          <p class="lead">After registering you can open Calliope where you should be prompted with a login screen.</p> 
+
+          <p class="lead">At this point you can enter your CyVerse account username and password into the respective fields. If you would like Calliope to remember your username in the future you can check the box. If you have not yet registered for an account click on the blue 'Register' text. If you have trouble logging in and would like to change your password click on 'Forgot Password'.</p>
+        </div>
+      </div>
+    </div>
+     <hr> 
+
+      <div class="container">
+        <h1>Developer Documentation </h1>
         <div class="container">
           <div class="col-12">
-          <p class="lead"> All Code is maintained on GitHub</p>
-        <div class="container">
+          <p class="lead"> All Source Code is maintained on <a href="https://github.com/cyverse-gis/suas-metadata" target="_blank">GitHub</a></p>
+        <div class="container-fluid">
           <div class="accordion" id="faqAccordion">
             <div class="card">
               <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne"
                 aria-expanded="false" aria-controls="collapseOne">
-                <h3>Important Design Patterns</h3>
+                <h3>Design Patterns</h3>
                 </button>
                 </h2>
               </div>
@@ -143,7 +200,7 @@ body, html {
                 <h2 class="mb-0">
                   <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
                   aria-expanded="false" aria-controls="collapseTwo">
-                    <h3>Important Model Classes</h3>
+                    <h3>Model Classes</h3>
                   </button>
                 </h2>
               </div>
