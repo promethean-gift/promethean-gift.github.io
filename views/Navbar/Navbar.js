@@ -35,7 +35,7 @@ class Navbar extends View {
   }
   setupSearchIQ() {
     window.siqConfig = {
-      engineKey: "2cdce557dd6f75cfcca70a1beabf0740",
+      engineKey: "81502ca5781a2024e413b6842ac85411",
       forceLoadSettings: true
     };
     window.siqConfig.baseUrl = "//pub.searchiq.co/";

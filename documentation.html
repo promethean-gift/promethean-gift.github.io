@@ -29,6 +29,20 @@
   <script src="https://kit.fontawesome.com/f2d2b39d62.js" crossorigin="anonymous" SameSite="none Secure"></script>
   <script type="module" src="controllers/VanillaController.js"></script>
 
+<script type="text/javascript">
+    (function () {
+        window.siqConfig = {
+            engineKey: "81502ca5781a2024e413b6842ac85411",
+            forceLoadSettings: false        // change false to true if search box on your site is adding dynamically
+        };
+        window.siqConfig.baseUrl = "//pub.searchiq.co/";
+        var script = document.createElement("SCRIPT");
+        script.src = window.siqConfig.baseUrl + '/js/container/siq-container-2.js?cb=' + (Math.floor(Math.random()*999999)) + '&engineKey=' + siqConfig.engineKey;
+        script.id = "siq-container";
+        document.getElementsByTagName("HEAD")[0].appendChild(script);
+    })();
+</script>
+
 <style>
 body, html {
   height: 100%;
