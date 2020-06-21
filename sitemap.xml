@@ -5,15 +5,30 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 	<url>
-		<loc>https://cyverse-gis.github.io/</loc>
+		<loc>https://promethean-gift.github.io/</loc>
 	</url>
 	<url>
-		<loc>https://cyverse-gis.github.io/about</loc>
+		<loc>https://promethean-gift.github.io/about</loc>
 	</url>
 	<url>
-		<loc>https://cyverse-gis.github.io/documentation</loc>
+		<loc>https://promethean-gift.github.io/background</loc>
 	</url>
 	<url>
-		<loc>https://cyverse-gis.github.io/faq</loc>
+		<loc>https://promethean-gift.github.io/map</loc>
+	</url>
+	<url>
+		<loc>https://promethean-gift.github.io/report</loc>
+	</url>
+	<url>
+		<loc>https://promethean-gift.github.io/guidelines</loc>
+	</url>
+	<url>
+		<loc>https://promethean-gift.github.io/resources</loc>
+	</url>
+	<url>
+		<loc>https://promethean-gift.github.io/replicate</loc>
+	</url>
+	<url>
+		<loc>https://promethean-gift.github.io/faq</loc>
 	</url>
 </urlset>

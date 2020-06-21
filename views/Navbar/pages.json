@@ -1,5 +1,10 @@
 [
-  { "path": "/about", "title": "About" },
-  { "path": "/documentation", "title": "Documentation" },
+  { "path": "/background", "title": "Background" },
+  { "path": "/map", "title": "Map" },
+  { "path": "/report", "title": "Report" },
+  { "path": "/guidelines", "title": "Guidelines" },
+  { "path": "/resources", "title": "Resources" },
+  { "path": "/replicate", "title": "Replicate" },
+  { "path": "/about", "title": "About" }, 
   { "path": "/faq", "title": "FAQ" }
 ]
