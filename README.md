@@ -1,12 +1,12 @@
-# calliope.github.io
+# promethean-gift.github.io
 
-Bootstrap github.io website for Calliope Project 
+Bootstrap github.io website for Promethean Gift test website
 
 ## Website development
 
 To run locally:
 ```
-git clone https://github.com/cyverse-gis/cyverse-gis.github.io.git
+git clone https://github.com/promethean-gift/promethean-gift.github.io.git
 cd cyverse-gis.github.io
 npm install
 npm run serve
