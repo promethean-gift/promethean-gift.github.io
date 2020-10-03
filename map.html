@@ -54,7 +54,7 @@ body, html {
 
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/sonoran_wash.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/san_diego_canyon.jpg");
   height: 40%;
   background-position: center;
   background-repeat: no-repeat;
@@ -131,31 +131,6 @@ body, html {
 			token: mapboxgl.accessToken
 			}
 		   ),
-		  "OpenStreetMaps": L.tileLayer(
-		    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-		    {
-		      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, sUAS Data Source © <a href="https://cals.arizona.edu/srer/">The University of Arizona, Arizona Experiment Station</a>',	
-		      minZoom: 12,
-		      maxZoom: 21,
-		      id: "osm.streets"
-		    }
-		  ),
-		  "Google-Map": L.tileLayer(
-		    "https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
-		    {
-		      minZoom: 12,
-		      maxZoom: 21,
-		      id: "google.street"
-		    }
-		  ),
-		  "Google-Satellite": L.tileLayer(
-		    "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-		    {
-		      minZoom: 12,
-		      maxZoom: 21,
-		      id: "google.satellite"
-		    }
-		  ),
 		  "Google-Hybrid": L.tileLayer(
 		    "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
 		    {
@@ -186,9 +161,9 @@ body, html {
 
 		// custom colors
 		var parcelsStyle = {
-			"fillColor": "#ff7800",
+			"fillColor": "#FFFF00",
     		"fillOpacity": 0,
-		    "color": "#ff7800",
+		    "color": "#FFFF00",
 		    "weight": 1,
 		    "opacity": 0.25
 		};
@@ -225,7 +200,7 @@ body, html {
 		    dataLayer.addTo(map);
 		}
 
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/sandoval_parcel_leaflet.geojson", function(parcels) { addParcelsToMap(parcels, map); });
+		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_parcels.geojson", function(parcels) { addParcelsToMap(parcels, map); });
 
 		function addParcelsToMap(parcels, map) {
 		    var dataLayer = L.geoJson(parcels, {
@@ -247,7 +222,7 @@ body, html {
 		    dataLayer.addTo(map);
 		}
 
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/sandoval_structures.geojson", function(structures) { addStructuresToMap(structures, map); });
+		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_structures.geojson", function(structures) { addStructuresToMap(structures, map); });
 
 		function addStructuresToMap(structures, map) {
 		    var dataLayer = L.geoJson(structures, {
@@ -267,7 +242,7 @@ body, html {
 		    dataLayer.addTo(map);
 		}
 
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_structures_100ft_buffer.geojson", function(structures_buffered) { addBufferedStructuresToMap(structures_buffered, map); });
+		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_100ft_buffer.geojson", function(structures_buffered) { addBufferedStructuresToMap(structures_buffered, map); });
 
 		function addBufferedStructuresToMap(structures_buffered, map) {
 		    var dataLayer = L.geoJson(structures_buffered, {
