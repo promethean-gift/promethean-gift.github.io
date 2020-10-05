@@ -1,19 +1,19 @@
 {
-  "name": "cyverse-gis.github.io",
+  "name": "promethean-gift.github.io",
   "version": "0.1.0",
-  "description": "calliope project website",
+  "description": "Jemez TNC project website",
   "scripts": {
     "serve": "serve ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cyverse-gis/cyverse-gis.github.io.git"
+    "url": "git+https://github.com/promethean-gift/promethean-gift.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/cyverse-gis/cyverse-gis.github.io/issues"
+    "url": "https://github.com/promethean-gift/promethean-gift.github.io/issues"
   },
   "license": "GNU GPL 3.0",
-  "homepage": "https://github.com/cyverse-gis/cyverse-gis.github.io#readme",
+  "homepage": "https://github.com/promethean-gift/promethean-gift.github.io#readme",
   "devDependencies": {
     "serve": "^11.3.0"
   },
