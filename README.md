@@ -7,7 +7,7 @@ Bootstrap github.io website for Promethean Gift test website
 To run locally:
 ```
 git clone https://github.com/promethean-gift/promethean-gift.github.io.git
-cd cyverse-gis.github.io
+cd promethean-gift.github.io
 npm install
 npm run serve
 ```
