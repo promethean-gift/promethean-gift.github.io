@@ -52,7 +52,7 @@ body, html {
 }
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/assets/jemez_springs.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/san_diego_canyon.jpg");
   height: 30%;
   background-position: center;
   background-repeat: no-repeat;
@@ -60,64 +60,88 @@ body, html {
   position: relative;
 }
 
+/* Place text in the middle of the image */
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 70%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  font-family: Helvetica, sans-serif;
+    font-size: 1.75em;
+    line-height: 1.5em;  
 }
 
 .hero-text button {
   border: none;
   outline: 0;
   display: inline-block;
-  padding: 10px 25px;
+  padding: 150px 50px;
   color: black;
   background-color: #ddd;
   text-align: center;
   cursor: pointer;
 }
 
-.hero-text button:hover {
-  background-color: #555;
-  color: white;
-}
 </style>
 
 </head>
 
 <body>
-    <header></header>
-      <div class="hero-image">
-        <div class="hero-text">
-          <h2>Who we are</strong></h2>
+<header></header>
+  <div class="hero-image">
+  <main role="main">
+      <div class="hero-text">
+        <h1 style="font-size:50px">About Us</h1>
+      </div>
+  </div>
+
+  <section class="gallery-block cards-gallery">
+      <div class="container">
+        <h2 class="display-" align="center"></h2>
+        <br />
+        
+        <div class="row">
+          <div class="col-md-6 col-lg-6">
+            <div class="card border-0 transform-on-hover" align="center">
+              <h3>University of Arizona</h3>
+              <p> We are a geoinformatics and data science team focused on creating and working with open-source software for the life and earth sciences.</p>
+              <p><a href="https://tysonswetnam.com" target="blank"><strong>Tyson L. Swetnam, Ph.D.</strong></a> -- Assistant Research Professor, BIO5 Institute, University of Arizona</p>
+              <p><a href="https://www.gillanscience.com/#home" target="blank"><strong>Jeffrey Gillan, Ph.D.</strong></a> -- Remote Sensing Data Scientist, sUAS Pilot, School of Natural Resources University of Arizona</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="card border-0 transform-on-hover">          
+            </div>
+            <div class="container" align="center">
+                <h3>Jemez Advisory Group</h3>
+                <p>Advisors on the project, members of the Jemez Fire Adapted Community</p>
+                <p> <strong>Thomas W. Swetnam, Ph.D.</strong>, Homeowner Area 3</p>
+                <p> <strong>Thomas Binion, Ph.D.</strong>, Homeowner Seven Springs</p>
+                <p> <strong>Harrison Jones, Ph.D.</strong>, Homeowner Thompson Ridge</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr>
+  <section class="gallery-block cards-gallery">
+      <div class="container">
+        <h2 class="display-" align="center"></h2>
+        <br />
+        
+        <div class="row">
+          <div class="col-md-12 col-lg-12">
+            <div class="card border-0 transform-on-hover" align="center">
+              <h3>Funding</h3>
+              <p><a href="https://nature.org/en-us/"><img src="assets/tnc-logo.svg" style="width:250px;"/></a>.</p>
+              This project was funded under award # 
+            </div>
+          </div>
         </div>
       </div>
-    <main role="main">
-      <div class="container">
-        <div class="col-lg-10">
-          <h2>University of Arizona</h2>
-          <p> We are a geoinformatics and data science team focused on creating and working with open-source software for the life and earth sciences.</p>
-          <p><a href="https://tysonswetnam.com" target="blank"><strong>Tyson L. Swetnam, Ph.D.</strong></a> -- Assistant Research Professor, BIO5 Institute, University of Arizona</p>
-          <p><a href="https://www.gillanscience.com/#home" target="blank"><strong>Jeffrey Gillan, Ph.D.</strong></a> -- Remote Sensing Data Scientist, sUAS Pilot, School of Natural Resources University of Arizona</p>
-        </div>
-        <hr>
-        <div class="col-lg-10">
-            <h2>Jemez Advisory Group</h2>
-            <p> <strong>Thomas W. Swetnam, Ph.D.</strong>, Area 3</p>
-            <p> <strong>Thomas Binion, Ph.D.</strong>, Seven Springs</p>
-            <p> <strong>Harrison Jones, Ph.D.</strong>, Thompson Ridge</p>
-        </div>
-        <hr>
-        <div class="col-lg-10">
-          <h2>Funding</h2>
-            <p> Funding for the project comes from <a href="https://nature.org/en-us/"><img src="assets/tnc-logo.svg" style="width:150px;"/></a>.</p>
-            <p> The infrastructure and data are hosted in a <a href="https://cyverse.org">Powered By <img src="assets/cyverse_cmyk.png" style="width:150px;"/></a> collaboration, located at the <a href="https://bio5.org/"> <img src="/assets/bio5_logo.png" style="width:150px;"></a> at the University of Arizona</p>
-            <p><i class="padding-left"> This material is based upon work supported by the <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1743442&HistoricalAwards=false"style="text-decoration:underline;"><img src="assets/NSF_4-Color_bitmap_Logo.png" style="width:50px;"/>National Science Foundation</a> under Grant No. DBI-0735191, DBI-1265383, DBI-1743442 </i></p>
 
-            <p class="lead"><strong>Any opinions, findings, conclusion, or recommendations expressed in this publication are those of the author(s) and do not necessarily reflect the view of the The Nature Conservancy.</strong></p>
+            <p class="lead"><strong>Any opinions, findings, conclusion, or recommendations expressed in this publication are those of the author(s) and do not necessarily reflect the views of the The Nature Conservancy.</strong></p>
           </div>
 
        </div>     

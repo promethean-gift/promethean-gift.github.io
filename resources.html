@@ -45,21 +45,22 @@
 
 <style>
 body, html {
+  padding-top: 35px;
   height: 100%;
-  margin: 0;
+  margin: 10px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("assets/cyverse_globe_cmyk.png");
-  height: 40%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/san_diego_canyon.jpg");
+  height: 30%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
 
+/* Place text in the middle of the image */
 .hero-text {
   text-align: center;
   position: absolute;
@@ -67,25 +68,23 @@ body, html {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  font-family: Helvetica, sans-serif;
+    font-size: 1.75em;
+    line-height: 1.5em;  
 }
 
 .hero-text button {
   border: none;
   outline: 0;
   display: inline-block;
-  padding: 10px 25px;
+  padding: 150px 50px;
   color: black;
   background-color: #ddd;
   text-align: center;
   cursor: pointer;
 }
 
-.hero-text button:hover {
-  background-color: #555;
-  color: white;
-}
 </style>
-
 </head>
 
 <body>
@@ -94,49 +93,63 @@ body, html {
   <main role="main">
       <div class="hero-text">
         <h2 style="font-size:50px">Resources</h2>
-        <p>This work uses publicly-available data.</p> 
-        <p>Data are owned by their respective entities. Where not explicitly identified, refer to the source entity for (re)use agreements.</p>
       </div>
   </div>
+ 
 
   <section class="gallery-block cards-gallery">
-      <div class="container">
-        <h2 class="display-" align="center"></h2>
+      <div class="container" align="center">
+        <h2 class="display-" align="center">Public Data Sets</h2>
         <br />
-        
         <div class="row">
           <div class="col-md-6 col-lg-6">
             <div class="card border-0 transform-on-hover">
-              
-            </div>
-            <div class="container">
-              <p><h2 style="font-size:50px">Lidar</h2></p>
-              <p>Occupied aircraft Light Detection and Range (lidar) data from the United States Geological Survey (USGS) <a href="https://www.usgs.gov/core-science-systems/ngp/3dep" target="_blank">3DEP</a> program are available for the Jemez Mountains. Those data were collected in 2016 and 2018.</p>
-              <p>Lidar data from 2012 collected by United States Forest Service (USFS) Collaborative Forest Landscape Restoration Program: Southwest Jemez are available upon request to the USFS R3 GIS office.</p>
-              <p>Research lidar data from 2012 and 2010 collected by the National Science Foundation are available from <a href="https://opentopography.org" target="blank">OpenTopography.org</a></p>  
+              <h3>Lidar</h3>
+              <a class="lightbox" href="assets/mcn_rna.jpg"><a href="assets/mcn_rna.jpg" target="blank">
+                <img src="assets/mcn_rna.jpg" alt="Card Image" class="card-img-top">
+              </a>
+              <div class="card-body" >
+                <p>Occupied aircraft Light Detection and Range (lidar) data from the United States Geological Survey (USGS) <a href="https://www.usgs.gov/core-science-systems/ngp/3dep" target="_blank">3DEP</a> program were collected in 2016 and 2018. These data are available via <a href="https://usgs.entwine.io">USGS 3DEP Entwine Portal</a>, <a href="https://www.usgs.gov/core-science-systems/ngp/3dep/data-tools" target="blank"> USGS National Map</a>, and <a href="ftp://rockyftp.cr.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/" target="blank">FTP </a></p>
+                <p>Lidar data were collected by United States Forest Service (USFS) Collaborative Forest Landscape Restoration Program in 2012 and are available upon request to the <a href="https://www.fs.usda.gov/detail/r3/landmanagement/gis/?cid=STELPRDB5202474" target="blank"> USFS Region 3 GIS Office</a>.</p>
+                <p>Earlier research lidar data from 2012 and 2010 collected by the National Science Foundation are available from <a href="https://opentopography.org" taret="blank">OpenTopography.org</a></p>
+
+                <a title="Entwine" href="https://usgs.entwine.io" target="blank"><img src="assets/entwine_logo.png" height="64"></a>
+
+                <a title="USGS FTP" href="https://www.usgs.gov/core-science-systems/ngp/3dep/data-tools" target="blank"><img src="assets/usgs.svg.png" height="64"></a>
+
+                <a title="OpenTopography.org" href="https://opentopography.org" target="blank"><img src="https://cloud.sdsc.edu/v1/AUTH_opentopography/www/images/otlogos/opentopo_logo_text.png" height="128"></a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
+
           <div class="col-md-6 col-lg-6">
-            <div class="card border-0 transform-on-hover">
-              
+            <div class="card border-0 transform-on-hover">          
             </div>
-            <div class="container">
-              <p><h2 style="font-size:50px">SfM</h2></p>
+            <div class="container" align="center">
+              <p><h3>SfM</h3></p>
               <p>Structure from Motion (SfM) photogrammetry data from small unmanned aerial systems, i.e. drones, were collected as part of this project over a limited area</p> 
             </div>
           </div>
+
+          <div class="col-md-6 col-lg-6">
+            <div class="card border-0 transform-on-hover">          
+            </div>
+            <div class="container" align="center">
+              <p><h3>GIS Layers</h3></p>
+              <p>Geographic Information System public data sets</p>
+              <a title="Sandoval County Parcel Mapping" href="https://www.sandovalcountynm.gov/elected-officials/county-assessor/parcel-mapping/" target="blank"><img src="assets/sandoval.png" height="64"></a>
+
+              <p><a href="https://www.sandovalcountynm.gov/elected-officials/county-assessor/parcel-mapping/" target="blank"> Sandoval County Parcel GIS data </a></p>
+
+              <a title="Microsoft Building Footprints" href="https://github.com/microsoft/USBuildingFootprints" target="blank"><img src="assets/microsoft.png" height="64"> <img src="https://raw.githubusercontent.com/microsoft/USBuildingFootprints/master/images/segmentation.png" height="64"></a>
+
+              
+              <p> <a href="https://github.com/microsoft/USBuildingFootprints" target="blank"> Microsoft's United States Building Footprints</a> </p> 
+            </div>
+          </div>
+
         </div>
 
-
-  <div class="container">
-    <h2 style="font-size:50px">Data Sets</h2>
-    <p> <a href="https://www.usgs.gov/core-science-systems/ngp/3dep" target="_blank">USGS 3DEP</a> </p>
-    <p> Sandoval County Parcel GIS </p>
-    <p> National Park Service </p>
-    <p> Microsoft Buildings </p>
-  </div>
   <hr>
   <div class="container">
     <h2 style="font-size:50px">Open Source Software</h2>
