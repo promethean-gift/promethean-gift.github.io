@@ -42,6 +42,15 @@
   <script type="text/javascript" src="node_modules/less/dist/less.min.js" data-log-level="1"></script>
   <script src="https://kit.fontawesome.com/f2d2b39d62.js" crossorigin="anonymous"></script>
   <script type="module" src="controllers/VanillaController.js"></script>
+
+  
+  <script src="https://unpkg.com/geotiff@0.4.1/dist/main.js"></script>
+  <script src="https://unpkg.com/plotty@0.2.0/src/plotty.js"></script>
+  <script src="leaflet-geotiff.js"></script>
+  <!-- Load any renderer you need -->
+  <script src="leaflet-geotiff-plotty.js"></script>
+  <script src="leaflet-geotiff-vector.js"></script>
+
 </head>
 
 <style>
@@ -311,7 +320,9 @@ body, html {
 		
 		// Add Geolocation
 		map.locate({setView: true, maxZoom: 13});
-	
+	  
+	    // Geotiff.js
+
 	</script>
   </body>
 </html>
