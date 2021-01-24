@@ -3,20 +3,6 @@
 
 <head>
 
-<script type="text/javascript">
-    (function () {
-        window.siqConfig = {
-            engineKey: "81502ca5781a2024e413b6842ac85411",
-            forceLoadSettings: false        // change false to true if search box on your site is adding dynamically
-        };
-        window.siqConfig.baseUrl = "//pub.searchiq.co/";
-        var script = document.createElement("SCRIPT");
-        script.src = window.siqConfig.baseUrl + '/js/container/siq-container-2.js?cb=' + (Math.floor(Math.random()*999999)) + '&engineKey=' + siqConfig.engineKey;
-        script.id = "siq-container";
-        document.getElementsByTagName("HEAD")[0].appendChild(script);
-    })();
-</script>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
@@ -43,14 +29,6 @@
   <script src="https://kit.fontawesome.com/f2d2b39d62.js" crossorigin="anonymous"></script>
   <script type="module" src="controllers/VanillaController.js"></script>
 
-  
-  <script src="https://unpkg.com/geotiff@0.4.1/dist/main.js"></script>
-  <script src="https://unpkg.com/plotty@0.2.0/src/plotty.js"></script>
-  <script src="leaflet-geotiff.js"></script>
-  <!-- Load any renderer you need -->
-  <script src="leaflet-geotiff-plotty.js"></script>
-  <script src="leaflet-geotiff-vector.js"></script>
-
 </head>
 
 <style>
@@ -60,7 +38,6 @@ body, html {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/san_diego_canyon.jpg");
@@ -95,10 +72,11 @@ body, html {
   background-color: #555;
   color: white;
 }
+
 </style>
   <head>
     <meta charset="UTF-8">
-    <title>rem-srer leaflet demo</title>
+    <title>Jemez Firewise Leaflet Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -110,8 +88,9 @@ body, html {
 	<script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
     <script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-	<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
 
 	<style>
         #map { 
@@ -125,7 +104,7 @@ body, html {
 	<div id="map"></div>
 	<script>
 		
-		//Init Overlays
+		// Overlays
 		var overlays = { 
 			
 		};
@@ -163,8 +142,6 @@ body, html {
 		//Render Main Map
 		var map = L.map("map", mapOptions);
 
-		//Init Layer Control
-		var layerControl = L.control.layers(basemaps, overlays).addTo(map);
 
 		// Add GEOJSON
 
@@ -179,18 +156,26 @@ body, html {
 
 		var structuresStyle = {
 			"fillColor": "#000000",
-    		"fillOpacity": 1.0,
+    		"fillOpacity": 0.15,
 		    "color": "#000000",
 		    "weight": 1,
-		    "opacity": 1.0
+		    "opacity": 0.30
 		};
 
 		var bufferedstructuresStyle = {
 			"fillColor": "#000000",
-    		"fillOpacity": 0.25,
-		    "color": "#000000",
+    		"fillOpacity": 0.3,
+		    "color": "#FF8C00",
 		    "weight": 1,
-		    "opacity": 0.25
+		    "opacity": 0.20
+		};
+		
+		var sUAStreecanopyStyle = {
+			"fillColor": "#000000",
+    		"fillOpacity": 0.0,
+		    "color": "#FF0000",
+		    "weight": 0.25,
+		    "opacity": 0.50
 		};
 
 
@@ -198,33 +183,23 @@ body, html {
 			"fillColor": "#000000",
     		"fillOpacity": 0.1,
 		    "color": "#000000",
-		    "weight": 1,
-		    "opacity": 0.65
+		    "weight": 0.0,
+		    "opacity": 0.0
 		};
 
-		// create function for Parcels GEOjson
-
-		function addParcelsToMap(parcels, map) {
-		    var dataLayer = L.geoJson(parcels);
-		    dataLayer.addTo(map);
-		}
+		// create function for Sandoval County Parcels geojson -- removed ability to select parcels for any unique id information.
 
 		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_parcels.geojson", function(parcels) { addParcelsToMap(parcels, map); });
 
 		function addParcelsToMap(parcels, map) {
 		    var dataLayer = L.geoJson(parcels, {
 		    	style: parcelsStyle,
-		        onEachFeature: function(feature, layer) {
-		            var popupText = "Sandoval County Parcels" 
-		                + "<br><a href='https://www.sandovalcountynm.gov/elected-officials/county-assessor/parcel-mapping/' target='_blank'>View Parcel Data Service</a>" 
-		                + "<br><strong>Parcel ID: </strong>" + feature.properties.Parcel_ID
-		                + "<br><strong>Acreage: </strong>" + feature.properties.Acrage;
-		            layer.bindPopup(popupText); }
-		        });
+		    	interactive: false
+		    });
 		    dataLayer.addTo(map);
 		}
 
-		// create function for Microsoft Structures GEOjson
+		// create function for Microsoft Structures geojson
 
 		function addStructuresToMap(structures, map) {
 		    var dataLayer = L.geoJson(structures);
@@ -244,85 +219,129 @@ body, html {
 		    dataLayer.addTo(map);
 		}
 
-		// create function for Microsoft Structures GEOjson with 100ft Buffers
+		// create function for Firewise buffers
 
 		function addBufferedStructuresToMap(structures_buffered, map) {
 		    var dataLayer = L.geoJson(structures_buffered);
 		    dataLayer.addTo(map);
 		}
 
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_100ft_buffer.geojson", function(structures_buffered) { addBufferedStructuresToMap(structures_buffered, map); });
+		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/7springs_buffers.geojson", function(structures_buffered) { addBufferedStructuresToMap(structures_buffered, map); });
+		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_buffers.geojson", function(structures_buffered) { addBufferedStructuresToMap(structures_buffered, map); });
 
 		function addBufferedStructuresToMap(structures_buffered, map) {
 		    var dataLayer = L.geoJson(structures_buffered, {
 		    	style: bufferedstructuresStyle,
 		        onEachFeature: function(feature, layer) {
-		            var popupText = "100ft buffer around structures" 
-		                + "<br><a href='https://www.nfpa.org/Public-Education/Fire-causes-and-risks/Wildfire/Preparing-homes-for-wildfire' target='_blank'>Creating Defensible Space</a>";
+		            var popupText = "<br><strong>Firewise Recommended Buffers</strong>"
+		                + "<br>" + feature.properties.zone + " Zone"
+		                + "<br><strong>Distance to structure (ft): </strong>" + Math.round(feature.properties.distance*3.281)
+		                + "<br><strong>Average canopy separation (ft): </strong>" + Math.round(feature.properties.tree_spacing*3.281)
+		                + "<br><strong>Canopy Cover (%): </strong>" + Math.round(feature.properties.canopy_cover*100)
+		                + "<br><strong>Tree count: </strong>" + feature.properties.tree_count
+		                + "<br><a href='https://www.nfpa.org/Public-Education/Fire-causes-and-risks/Wildfire/Preparing-homes-for-wildfire' target='_blank'>About Defensible Space</a>";
 		            layer.bindPopup(popupText); }
 		        });
 		    dataLayer.addTo(map);
 		}
 
-		// Add pre1979 fires GEOjson
+        // add sUAS segmented tree canopies
 
-		function addDataToMap(fire_data, map) {
-		    var dataLayer = L.geoJson(fire_data);
-		    dataLayer.addTo(map);
-		}
+        function addsUASCanopy(canopies, map) {
+        	var dataLayer = L.geoJson(canopies, {
+        		style: sUAStreecanopyStyle,
+        		interactive: false
+        	});
 
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_pre1979.geojson", function(fire_data) { addDataToMap(fire_data, map); });
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_1980s.geojson", function(fire_data) { addDataToMap(fire_data, map); });
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_1990s.geojson", function(fire_data) { addDataToMap(fire_data, map); });
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_2000s.geojson", function(fire_data) { addDataToMap(fire_data, map); });
-		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_2010s.geojson", function(fire_data) { addDataToMap(fire_data, map); });
+        	dataLayer.addTo(map);
 
-		function addDataToMap(fire_data, map) {
+        }
+        
+        $.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/7springs_treeseg.geojson", function(canopies) { addsUASCanopy(canopies, map); });
+        $.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_high_treeseg.geojson", function(canopies) { addsUASCanopy(canopies, map); });
+        $.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_mid_treeseg.geojson", function(canopies) { addsUASCanopy(canopies, map); });
+        $.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_low_treeseg.geojson", function(canopies) { addsUASCanopy(canopies, map); });
+
+
+        // add historical fire perimeters
+
+		function addFiresToMap(fire_data, map) {
 		    var dataLayer = L.geoJson(fire_data, {
 		    	style: fireStyle,
-		        onEachFeature: function(feature, layer) {
-		            var popupText = "<strong>Fire Year</strong>: " + feature.properties.FIRE_YEAR
-		            	+ "<br><strong>Name: </strong>" + feature.properties.INCIDENT
-		            	+ "<br><strong>Acres burned: </strong>" + feature.properties.GIS_ACRES;
-		            layer.bindPopup(popupText); 
-		        	var label = L.marker(layer.getBounds().getCenter(), {
-				      icon: L.divIcon({
-				        className: 'label',
-				        opacity: 0.5,
-				        riseOnHover: true,
-				        html: feature.properties.FIRE_YEAR,
-				        iconSize: [0, 0]
-				      })
-				    }).addTo(map).bindPopup(popupText);}
+		    	interactive: false
+//		        onEachFeature: function(feature, layer) {
+//		            var popupText = "<strong>Fire Year</strong>: " + feature.properties.FIRE_YEAR
+//		            	+ "<br><strong>Name: </strong>" + feature.properties.INCIDENT
+//		            	+ "<br><strong>Acres burned: </strong>" + feature.properties.GIS_ACRES;
+//		            layer.bindPopup(popupText); 
+//		        	var label = L.marker(layer.getBounds().getCenter(), {
+//				      icon: L.divIcon({
+//				        className: 'label',
+//				        opacity: 0.5,
+//				        riseOnHover: true,
+//				        html: feature.properties.FIRE_YEAR,
+//				        iconSize: [0, 0]
+//				      })
+//				    }).addTo(map).bindPopup(popupText);}
 		        });
 		    dataLayer.addTo(map);
 		}
 
-		// GeoCoder for Address based search
+//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/pre1979.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
+//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/jemez_1980s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
+//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/jemez_1990s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
+//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/jemez_2000s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
+//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/2010s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
+		$.getJSON("https://opendata.arcgis.com/datasets/9125a35d10e2410fa9d6dcdb46256702_10.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
+
+
+	    // Overlay Area 3 Canopy Height model layers (TMS)
+        var area3_chm = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_chm/{z}/{x}/{y}.png', {tms: true, opacity: 1.0, attribution: "University of Arizona 2020", minZoom: 14, maxZoom: 22});
+
+	    // Overlay 7 Springs Canopy Height model layers (TMS)
+        var sevensprings_chm = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/7springs_chm/{z}/{x}/{y}.png', {tms: true, opacity: 1.0, attribution: "University of Arizona 2020", minZoom: 14, maxZoom: 22});
+
+
+        // Overlay Area 3 Orthomosaic layers (TMS)//
+        var area3_ortho = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_ortho/{z}/{x}/{y}.png', {tms: true, opacity: 0.9, attribution: "University of Arizona 2020", minZoom: 12, maxZoom: 22});
+
+        // Overlay Seven Springs Orthomosaic layers (TMS)//
+        var sevensprings_ortho = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/seven_springs_ortho/{z}/{x}/{y}.png', {tms: true, opacity: 0.9, attribution: "University of Arizona 2020", minZoom: 12, maxZoom: 22});
+        
+        var overlay = {"7 Springs sUAS Orthomosaic": sevensprings_ortho,
+ 				     	"7 Springs sUAS Canopy Height Model": sevensprings_chm,
+                       	"Area 3 sUAS Orthomosaic": area3_ortho,
+                       	"Area 3 sUAS Canopy Height Model": area3_chm
+                    };
+
+        L.control.layers(basemaps, overlay).addTo(map);
+
+
+// Fit to overlay bounds (SW and NE points with (lat, lon)) to 7 Springs
+//        map.fitBounds([[35.91653757520128, -106.70422118963053], [35.92398924195973, -106.71259704721558]]);
+
+// GeoCoder for Address based search
 		// https://github.com/perliedman/leaflet-control-geocoder
 
 		var geocoder = L.Control.geocoder({
-		  defaultMarkGeocode: false,
-		  collapsed: true,
-		  iconLabel: "Search by Address"
-		})
-		  .on('markgeocode', function(e) {
-		    var bbox = e.geocode.bbox;
-		    var poly = L.polygon([
-		      bbox.getSouthEast(),
-		      bbox.getNorthEast(),
-		      bbox.getNorthWest(),
-		      bbox.getSouthWest()
-		    ]).addTo(map);
-		    map.fitBounds(poly.getBounds());
-		  })
-		  .addTo(map);
-		
-		// Add Geolocation
-		map.locate({setView: true, maxZoom: 13});
-	  
-	    // Geotiff.js
+		  			   						defaultMarkGeocode: false,
+		  									collapsed: true,
+		  									iconLabel: "Search by Address"
+										}).on('markgeocode', function(e) {
+										    var bbox = e.geocode.bbox;
+										    var poly = L.polygon([
+										      bbox.getSouthEast(),
+										      bbox.getNorthEast(),
+										      bbox.getNorthWest(),
+										      bbox.getSouthWest()
+										    ]).addTo(map);
+										    map.fitBounds(poly.getBounds());
+										  })
+										  .addTo(map);
 
+		// Add Geolocation
+		map.locate({setView: true, maxZoom: 22});
+    
 	</script>
   </body>
 </html>

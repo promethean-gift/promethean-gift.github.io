@@ -28,20 +28,7 @@
   <script type="text/javascript" src="node_modules/less/dist/less.min.js" data-log-level="1"></script>
   <script src="https://kit.fontawesome.com/f2d2b39d62.js" crossorigin="anonymous" SameSite="none Secure"></script>
   <script type="module" src="controllers/VanillaController.js"></script>
-
-<script type="text/javascript">
-    (function () {
-        window.siqConfig = {
-            engineKey: "81502ca5781a2024e413b6842ac85411",
-            forceLoadSettings: false        // change false to true if search box on your site is adding dynamically
-        };
-        window.siqConfig.baseUrl = "//pub.searchiq.co/";
-        var script = document.createElement("SCRIPT");
-        script.src = window.siqConfig.baseUrl + '/js/container/siq-container-2.js?cb=' + (Math.floor(Math.random()*999999)) + '&engineKey=' + siqConfig.engineKey;
-        script.id = "siq-container";
-        document.getElementsByTagName("HEAD")[0].appendChild(script);
-    })();
-</script>
+</head>   
 
 <style>
 body, html {
@@ -99,25 +86,29 @@ body, html {
 
   <section class="gallery-block cards-gallery">
       <div class="container" align="center">
-        <h2 class="display-" align="center">Public Data Sets</h2>
+        <h2 class="display-" align="center">Data</h2>
         <br />
         <div class="row">
           <div class="col-md-6 col-lg-6">
             <div class="card border-0 transform-on-hover">          
             </div>
             <div class="container" align="center">
-              <h3>SfM</h3>
+              <h3>Structure from Motion Photogrammetry</h3>
                 <a class="lightbox" href="assets/7springs_house2.JPG"><a href="assets/7springs_house2.JPG" target="blank">
                 <img src="assets/7springs_house2.JPG" alt="Card Image" class="card-img-top">
               </a>
             </a>
-              <p>Structure from Motion (SfM) photogrammetry data from small unoccupied aerial systems (sUAS), i.e. drones, were collected as part of this project over a limited extents in Area 3 and Seven Springs.</p> 
+              <p>Structure from Motion (SfM) photogrammetry data from small unoccupied aerial systems (sUAS), i.e. drones, were collected as part of this project over a limited extents in Area 3 and Seven Springs.</p>
+              <p><a href="https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/suas/" target="blank">Raw and Processed sUAS Data</a></p>
+              <p><a href="https://potree.entwine.io/data/view.html?r=%22https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/suas/ept/sevensprings/%22" target="blank">Seven Springs October 2020 sUAS SfM point cloud</a></p> 
+              <p><a href="https://potree.entwine.io/data/view.html?r=%22https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/suas/ept/area3/%22">Area 3 October 2020 sUAS SfM point cloud</a></p>
+
             </div>
           </div>
 
           <div class="col-md-6 col-lg-6">
             <div class="card border-0 transform-on-hover">
-              <h3>Lidar</h3>
+              <h3>Aerial lidar</h3>
               <a class="lightbox" href="assets/mcn_rna.jpg"><a href="assets/mcn_rna.jpg" target="blank">
                 <img src="assets/mcn_rna.jpg" alt="Card Image" class="card-img-top">
               </a></a>
@@ -135,6 +126,9 @@ body, html {
 
                 <a title="OpenTopography.org" href="https://opentopography.org" target="blank"><img src="https://cloud.sdsc.edu/v1/AUTH_opentopography/www/images/otlogos/opentopo_logo_text.png" width="128"></a></p>
 
+                <p><a href="https://potree.entwine.io/data/view.html?r=%22https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/lidar/ept/NM_SouthCentral_B9_2018/%22">Southwest Jemez 2018 lidar</a></p>
+                <p><a href="https://potree.entwine.io/data/view.html?r=%22https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/lidar/ept/USGS_LPC_NM_NorthCentral_B1_2016/%22">North Central New Mexico 2016</a></p>
+                <p><a href="https://potree.entwine.io/data/view.html?r=%22https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/lidar/ept/swj2012/%22">Southwest Jemez 2012 lidar</a></p>
               </div>
             </div>
           </div>
@@ -143,7 +137,7 @@ body, html {
             <div class="card border-0 transform-on-hover">          
               </div>
               <div class="container" align="center">
-              <p><h3>GIS Layers</h3></p>
+              <p><h3>Public GIS Layers</h3></p>
               <p>Geographic Information System public data sets</p>
               <a title="Sandoval County Parcel Mapping" href="https://www.sandovalcountynm.gov/elected-officials/county-assessor/parcel-mapping/" target="blank"><img src="assets/sandoval.png" width="128"</a>
 
@@ -244,6 +238,15 @@ body, html {
               <p><h3>SfM Processing</h3></p>
               
               <p><a title="Agisoft" href="https://agisoft.com" target="blank"><img src="assets/metashape_logo.png" width="128"></a></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="card border-0 transform-on-hover">          
+            </div>
+            <div class="container" align="center">
+              <p><h3>GIS Processing</h3></p>
+              
+              <p><a title="ArcGIS Online" href="https://www.arcgis.com/index.html" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ArcGIS_logo.png/240px-ArcGIS_logo.png" width="128"></a></p>
             </div>
           </div>
         </div>
