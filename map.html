@@ -116,6 +116,7 @@ body, html {
 		  "MapboxOutdoors": L.mapboxGL(
 		  {
 			style: 'mapbox://styles/mapbox/outdoors-v11', //hosted style id
+			attribution:'Mapbox Topography',
 			token: mapboxgl.accessToken
 			}
 		   ),
@@ -124,6 +125,7 @@ body, html {
 		    {
 		      minZoom: 12,
 		      maxZoom: 21,
+		      attribution: 'Google Topography Hybrid',
 		      id: "google.hybrid"
 		    }
 		  )
@@ -141,6 +143,9 @@ body, html {
 
 		//Render Main Map
 		var map = L.map("map", mapOptions);
+
+		// Attribution
+		//map.attributionControl.addAttribution('Powered by CyVerse; <a href="https://cyverse.org" target="blank">Powered by CyVerse</a>');
 
 
 		// Add GEOJSON
@@ -194,6 +199,7 @@ body, html {
 		function addParcelsToMap(parcels, map) {
 		    var dataLayer = L.geoJson(parcels, {
 		    	style: parcelsStyle,
+		    	attribution: "Sandoval County Parcel GIS <a href='https://www.sandovalcountynm.gov/elected-officials/county-assessor/parcel-mapping/' target='blank'>available for Download</a>",
 		    	interactive: false
 		    });
 		    dataLayer.addTo(map);
@@ -211,6 +217,7 @@ body, html {
 		function addStructuresToMap(structures, map) {
 		    var dataLayer = L.geoJson(structures, {
 		    	style: structuresStyle,
+		    	attribution: "Microsoft Buildings Layers <a href='https://github.com/microsoft/USBuildingFootprints' target='blank'>available on GitHub</a>",
 		        onEachFeature: function(feature, layer) {
 		            var popupText = "Structure data source:" 
 		                + "<br><a href='https://github.com/Microsoft/USBuildingFootprints' target='_blank'>Microsoft Buildings</a>";
@@ -292,7 +299,7 @@ body, html {
 //		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/jemez_1990s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
 //		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/jemez_2000s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
 //		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/2010s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
-		$.getJSON("https://opendata.arcgis.com/datasets/9125a35d10e2410fa9d6dcdb46256702_10.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
+//		$.getJSON("https://opendata.arcgis.com/datasets/9125a35d10e2410fa9d6dcdb46256702_10.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
 
 
 	    // Overlay Area 3 Canopy Height model layers (TMS)
