@@ -91,7 +91,6 @@ body, html {
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
-
 	<style>
         #map { 
           height: 100%; 
@@ -152,11 +151,11 @@ body, html {
 
 		// custom colors
 		var parcelsStyle = {
-			"fillColor": "#FFFF00",
+			"fillColor": "#000000",
     		"fillOpacity": 0,
-		    "color": "#FFFF00",
-		    "weight": 1,
-		    "opacity": 0.25
+		    "color": "#000000",
+		    "weight": 0.25,
+		    "opacity": 0.50
 		};
 
 		var structuresStyle = {
@@ -183,14 +182,14 @@ body, html {
 		    "opacity": 0.50
 		};
 
-
 		var fireStyle = {
 			"fillColor": "#000000",
-    		"fillOpacity": 0.1,
+    		"fillOpacity": 0.15,
 		    "color": "#000000",
 		    "weight": 0.0,
 		    "opacity": 0.0
 		};
+
 
 		// create function for Sandoval County Parcels geojson -- removed ability to select parcels for any unique id information.
 
@@ -226,6 +225,30 @@ body, html {
 		    dataLayer.addTo(map);
 		}
 
+        // add historical fire perimeters
+
+		function addFiresToMap(fire_data, map) {
+		    var dataLayer = L.geoJson(fire_data, {
+		    	style: fireStyle,
+		    	attribution: "USFS Historical Fire Atlas <a href='https://hub.arcgis.com/datasets/9125a35d10e2410fa9d6dcdb46256702_10/data' target='blank'>available from ArcGIS</a>",
+		        onEachFeature: function(feature, layer) {
+		            var popupText = "<strong>Fire Year</strong>: " + feature.properties.FIREYEAR
+		            	+ "<br><strong>Name: </strong>" + feature.properties.FIRENAME;
+		            layer.bindPopup(popupText); 
+		        	var label = L.marker(layer.getBounds().getCenter(), {
+				      icon: L.divIcon({
+				        className: 'label',
+				        opacity: 0.1,
+				        riseOnHover: true,
+				        iconSize: [0, 0]
+				      })
+				    }).addTo(map).bindPopup(popupText);}
+		        });
+		    dataLayer.addTo(map);
+		}
+
+		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/usfs_nm_fires.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
+
 		// create function for Firewise buffers
 
 		function addBufferedStructuresToMap(structures_buffered, map) {
@@ -255,12 +278,12 @@ body, html {
         // add sUAS segmented tree canopies
 
         function addsUASCanopy(canopies, map) {
-        	var dataLayer = L.geoJson(canopies, {
+        	var canopyLayer = L.geoJson(canopies, {
         		style: sUAStreecanopyStyle,
         		interactive: false
         	});
 
-        	dataLayer.addTo(map);
+        	canopyLayer.addTo(map);
 
         }
         
@@ -269,56 +292,26 @@ body, html {
         $.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_mid_treeseg.geojson", function(canopies) { addsUASCanopy(canopies, map); });
         $.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_low_treeseg.geojson", function(canopies) { addsUASCanopy(canopies, map); });
 
-
-        // add historical fire perimeters
-
-		function addFiresToMap(fire_data, map) {
-		    var dataLayer = L.geoJson(fire_data, {
-		    	style: fireStyle,
-		    	interactive: false
-//		        onEachFeature: function(feature, layer) {
-//		            var popupText = "<strong>Fire Year</strong>: " + feature.properties.FIRE_YEAR
-//		            	+ "<br><strong>Name: </strong>" + feature.properties.INCIDENT
-//		            	+ "<br><strong>Acres burned: </strong>" + feature.properties.GIS_ACRES;
-//		            layer.bindPopup(popupText); 
-//		        	var label = L.marker(layer.getBounds().getCenter(), {
-//				      icon: L.divIcon({
-//				        className: 'label',
-//				        opacity: 0.5,
-//				        riseOnHover: true,
-//				        html: feature.properties.FIRE_YEAR,
-//				        iconSize: [0, 0]
-//				      })
-//				    }).addTo(map).bindPopup(popupText);}
-		        });
-		    dataLayer.addTo(map);
-		}
-
-//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/pre1979.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
-//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/jemez_1980s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
-//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/jemez_1990s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
-//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/jemez_2000s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
-//		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/historical_fires/2010s.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
-//		$.getJSON("https://opendata.arcgis.com/datasets/9125a35d10e2410fa9d6dcdb46256702_10.geojson", function(fire_data) { addFiresToMap(fire_data, map); });
-
-
 	    // Overlay Area 3 Canopy Height model layers (TMS)
         var area3_chm = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_chm/{z}/{x}/{y}.png', {tms: true, opacity: 1.0, attribution: "University of Arizona 2020", minZoom: 14, maxZoom: 22});
 
 	    // Overlay 7 Springs Canopy Height model layers (TMS)
         var sevensprings_chm = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/7springs_chm/{z}/{x}/{y}.png', {tms: true, opacity: 1.0, attribution: "University of Arizona 2020", minZoom: 14, maxZoom: 22});
 
-
         // Overlay Area 3 Orthomosaic layers (TMS)//
-        var area3_ortho = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_ortho/{z}/{x}/{y}.png', {tms: true, opacity: 0.9, attribution: "University of Arizona 2020", minZoom: 12, maxZoom: 22});
+        var area3_ortho = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_ortho/{z}/{x}/{y}.png', {tms: true, opacity: 1.0, attribution: "University of Arizona 2020", minZoom: 12, maxZoom: 22});
 
         // Overlay Seven Springs Orthomosaic layers (TMS)//
-        var sevensprings_ortho = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/seven_springs_ortho/{z}/{x}/{y}.png', {tms: true, opacity: 0.9, attribution: "University of Arizona 2020", minZoom: 12, maxZoom: 22});
+        var sevensprings_ortho = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/seven_springs_ortho/{z}/{x}/{y}.png', {tms: true, opacity: 1.0, attribution: "University of Arizona 2020", minZoom: 12, maxZoom: 22});
         
+         // Overlay 2018 USGS Canopy Height Model layers (TMS)//
+        var jemez18_chm = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_2018/{z}/{x}/{y}.png', {tms: true, opacity: 1.0, attribution: "University of Arizona 2020", minZoom: 14, maxZoom: 22});
+
         var overlay = {"7 Springs sUAS Orthomosaic": sevensprings_ortho,
  				     	"7 Springs sUAS Canopy Height Model": sevensprings_chm,
                        	"Area 3 sUAS Orthomosaic": area3_ortho,
-                       	"Area 3 sUAS Canopy Height Model": area3_chm
+                       	"Area 3 sUAS Canopy Height Model": area3_chm,
+                        "USGS 2018 lidar Canopy Height Model": jemez18_chm
                     };
 
         L.control.layers(basemaps, overlay).addTo(map);
