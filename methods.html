@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Methods</title>
+
+  <!-- begin favicon block -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- end favicon block -->
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="style/bootstrap.css" />
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/d3/dist/d3.min.js"></script>
+  <link rel="stylesheet/less" type="text/css" href="style/index.less">
+  <script type="text/javascript" src="node_modules/less/dist/less.min.js" data-log-level="1"></script>
+  <script src="https://kit.fontawesome.com/f2d2b39d62.js" crossorigin="anonymous" SameSite="none Secure"></script>
+  <script type="module" src="controllers/VanillaController.js"></script>
+
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/assets/san_diego_canyon.jpg");
+  height: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+.fit-image{
+width: 100%;
+object-fit: cover;
+height: auto;
+}
+
+.fit-image2{
+width: 50%;
+object-fit: cover;
+height: auto;
+}
+</style>
+
+</head>
+
+<body>
+<header></header>
+  <div class="hero-image">
+  <main role="main">
+      <div class="hero-text">
+        <h1 style="font-size:50px">Determining Risk</h1>
+      </div>
+  </div>
+  
+  <div class="container">
+    
+  </div>
+  
+  <section class="gallery-block cards-gallery">
+      <div class="container" >
+        <h2 class="display-" align="center">National Fire Management</h2>
+        <p>The US Forest Service Research branch quantifies wildfire risks (<a href="https://wildfirerisk.org/" target="blank">WildfireRisk.org</a>) across the western US.</p>
+        <p>While these maps are at too coarse a resolution (100-270 meter pixels) for estimating fire risk to individual properties, they reveal how likely a fire is to spread across the landscape onto your private property.</p> 
+        <br />
+        <div class="container">
+            <iframe width="100%" height="800px" src="https://usfs.maps.arcgis.com/apps/MapSeries/index.html?appid=4d84e668fa374c2d8ed3c823af75737d" frameborder="0" scrolling="no"></iframe>
+        </div>
+         <div class="container">
+        <h2 class="display-" align="center">Fire Behavior Model Inputs</h2>
+        <p>The USGS 3DEP lidar datasets can be used for generating input parameters for fire behavior simulation models.</p>
+        <p>A sub-meter canopy height model was generated for the entire Jemez Mountains using the 2016 and 2018 lidar data.</p> 
+        </div>
+        <div class="container">
+        <h2 class="display-" align="center">Why use drones?</h2>
+        <div><img src="assets/phantom4.jpg" class="img-responsive fit-image2"><img src="assets/rtk.jpg" class="img-responsive fit-image2"></div>
+        <p>The existing forest lidar data products can be anywhere from one to more than 10 years old. Changes to the forest structure, particularly on your private property may not be up-to-date with recent thinning projects. By flying drones, we can survey a neighborhood in a few hours, and develop datasets which are 100 to 1,000 times denser than those with aerial lidar in under a day. These new data can be compared to older lidar datasets, or to older drone datasets. By comparing changes overtime, we can show improvements from recent thinning efforts which may make your home within specification for recommended Firewise spacing.</p> 
+        </div>
+         <div class="container">
+        <h2 class="display-" align="center" id="how-to">How to use the Map</h2>
+        <p>Clicking on the <a href="../map.html" target="blank">Map</a> feature will open up a Leaflet map with information about the Jemez Mountain WUI.</p>
+        <p> </p> 
+        <p>By clicking the search icon <i class="fa fa-search" aria-hidden="true"></i> in the upper right you can enter an address or a community name and the map will zoom to that location. If you're on a mobile phone, the map may ask for your location and use it to zoom in on your current location (if you're not in New Mexico, this may take you far from our area of interest).</p>
+        <p> In the layer group icon <i class="fas fa-layer-group"></i> you can turn on and off the different data layers.</p>
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Layers</th>
+              <th scope="col">Date</th>
+              <th scope="col">Resolution</th>
+              <th scope="col">Extents</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">sUAS Orthomosaics</th>
+              <td>2020</td>
+              <td>4 cm</td>
+              <td>Area 3, 7 Springs</td>
+            </tr>
+            <tr>
+              <th scope="row">sUAS Canopy Height Models</th>
+              <td>2020</td>
+              <td>25 cm</td>
+              <td>Area 3, 7 Springs</td>
+            </tr>
+            <tr>
+              <th scope="row">lidar Canopy Height Model</th>
+              <td>2016, 2018</td>
+              <td>25 cm</td>
+              <td>Jemez Mountains</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p>There are also vector layers that are visible in the map, some only at higher <a href="https://leafletjs.com/examples/zoom-levels/" target="blank">zoom levels</a>. The structures, tree canopies, and Firewise defensible space buffer layers are only visible at higher zoom levels.</p>
+        <p>The map defaults to a zoom level of 14 (1:35,000 scale) and ends at level 20 (1:500 scale).</p>
+        <p>There is a scale bar visible in the lower left corner of the map.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Layers</th>
+              <th scope="col">Origin</th>
+              <th scope="col">Visibility</th>
+              <th scope="col">Extent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Historical Fire Atlas</th>
+              <td>USFS Fire Atlas</td>
+              <td>All levels</td>
+              <td>Northern New Mexico</td>
+            </tr>
+            <tr>
+              <th scope="row">Parcels</th>
+              <td>Sandoval County GIS</td>
+              <td>All levels</td>
+              <td>Jemez Mountains AOI</td>
+            </tr>
+            <tr>
+              <th scope="row">Structures</th>
+              <td>Microsoft Building Footprints</td>
+              <td>Zoom level 17+</td>
+              <td>Jemez Mountains AOI</td>
+            </tr>
+            <tr>
+              <th scope="row">Firewise defensible space</th>
+              <td>sUAS flight areas</td>
+              <td>Zoom level 17+</td>
+              <td>buffer around structures in Area 3 and 7 Springs</td>
+            </tr>
+            <tr>
+              <th scope="row">Individual tree canopies</th>
+              <td>sUAS flight areas</td>
+              <td>Zoom level 17+</td>
+              <td>sUAS flight areas Area 3 and 7 Springs</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p>Around every structure that was mapped by the <a href="https://github.com/microsoft/USBuildingFootprints" target="blank">Microsoft US building footprints</a> or by our team (by hand) you can see the buffered rings which represent the <a href="https://www.nfpa.org/Public-Education/Fire-causes-and-risks/Wildfire/Preparing-homes-for-wildfire" target="blank">Firewise defensible space</a>.</p>
+        <img src="assets/7springs_chm_firewise.jpg" class="img-responsive fit-image">
+        <br>
+        <p>Our Firewise defensible space is described using four distances from the visible structures, calculated in the GIS.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Distance</th>
+              <th scope="col">Zone</th>
+              <th scope="col">Recommended Canopy Spacing</th>
+              <th scope="col">Extent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0 to 5 feet</th>
+              <td>Immediate</td>
+              <td>No trees</td>
+              <td>remove all fuels around structures</td>
+            </tr>
+            <tr>
+              <th scope="row">5 to 30 feet</th>
+              <td>Intermediate</td>
+              <td>>18 feet</td>
+              <td>remove ladder fuels</td>
+            </tr>
+            <tr>
+              <th scope="row">30 to 60 feet</th>
+              <td>Extended</td>
+              <td>>12 feet</td>
+              <td>remove dead fuels</td>
+            </tr>
+            <tr>
+              <th scope="row">60 to 100 feet</th>
+              <td>Extended</td>
+              <td>>6 feet</td>
+              <td>remove small trees near larger ones</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p>We calculated the number of tree tops visible in both aerial lidar and the available drone data, the tree canopy spacing and the percent (%) canopy cover of the area around the strucures in that zone are reported.</p>
+        <img src="assets/7springs_zoom_chm_firewise.jpg" class="img-responsive fit-image">
+        <p>Navigate the map to find your home and see how dense the forest is relative to your surrounding area. Compare your home to the recommended Firewise defensible space recommendations.</p>
+        </div>
+      </div>
+  </section>
+
+
+ 
+  </main>
+
+<footer></footer>
+
+</body>
+
+</html>

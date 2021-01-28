@@ -1,7 +1,7 @@
 [
   { "path": "/background", "title": "Background" },
+  { "path": "/methods", "title": "Methods" },
   { "path": "/map", "title": "Map" },
-  { "path": "/report", "title": "Methods" },
   { "path": "/guidelines", "title": "Guidelines" },
   { "path": "/resources", "title": "Resources" },
   { "path": "/replicate", "title": "Replicate" },
