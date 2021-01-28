@@ -275,8 +275,12 @@ body, html {
 		
 		// create function for Firewise buffers
 
+		// add sUAS flight areas with Firewise calculations
 		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/7springs_buffers.geojson", function(structures_buffered) { addBufferedStructuresToMap(structures_buffered, map); });
 		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/area3_buffers.geojson", function(structures_buffered) { addBufferedStructuresToMap(structures_buffered, map); });
+
+		// add remaining Jemez structures from Microsoft buildings layer
+		$.getJSON("https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_100ft_buffer.geojson", function(structures_buffered) { addBufferedStructuresToMap(structures_buffered, map); });		
 
 		function addBufferedStructuresToMap(structures_buffered, map) {
 		    var buffLayer = L.geoJson(structures_buffered, {

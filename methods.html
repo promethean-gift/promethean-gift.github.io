@@ -103,6 +103,10 @@ height: auto;
       <div class="container" >
         <h2 class="display-" align="center">National Fire Management</h2>
         <p>The US Forest Service Research branch quantifies wildfire risks (<a href="https://wildfirerisk.org/" target="blank">WildfireRisk.org</a>) across the western US.</p>
+        <div class="container">
+            <iframe width="100%" height="800px" src="https://wildfirerisk.org/explore/0/35/35043" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <br>
         <p>While these maps are at too coarse a resolution (100-270 meter pixels) for estimating fire risk to individual properties, they reveal how likely a fire is to spread across the landscape onto your private property.</p> 
         <br />
         <div class="container">
@@ -120,43 +124,11 @@ height: auto;
         </div>
          <div class="container">
         <h2 class="display-" align="center" id="how-to">How to use the Map</h2>
-        <p>Clicking on the <a href="../map.html" target="blank">Map</a> feature will open up a Leaflet map with information about the Jemez Mountain WUI.</p>
-        <p> </p> 
-        <p>By clicking the search icon <i class="fa fa-search" aria-hidden="true"></i> in the upper right you can enter an address or a community name and the map will zoom to that location. If you're on a mobile phone, the map may ask for your location and use it to zoom in on your current location (if you're not in New Mexico, this may take you far from our area of interest).</p>
-        <p> In the layer group icon <i class="fas fa-layer-group"></i> you can turn on and off the different data layers.</p>
-        <br>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Layers</th>
-              <th scope="col">Date</th>
-              <th scope="col">Resolution</th>
-              <th scope="col">Extents</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">sUAS Orthomosaics</th>
-              <td>2020</td>
-              <td>4 cm</td>
-              <td>Area 3, 7 Springs</td>
-            </tr>
-            <tr>
-              <th scope="row">sUAS Canopy Height Models</th>
-              <td>2020</td>
-              <td>25 cm</td>
-              <td>Area 3, 7 Springs</td>
-            </tr>
-            <tr>
-              <th scope="row">lidar Canopy Height Model</th>
-              <td>2016, 2018</td>
-              <td>25 cm</td>
-              <td>Jemez Mountains</td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-        <p>There are also vector layers that are visible in the map, some only at higher <a href="https://leafletjs.com/examples/zoom-levels/" target="blank">zoom levels</a>. The structures, tree canopies, and Firewise defensible space buffer layers are only visible at higher zoom levels.</p>
+        <p>Clicking on the <a href="../map.html" target="blank">Map</a> feature will open up a Leaflet map with information about the Jemez Mountains Wildland Urban Interface (WUI).</p>
+        <p>Upon loading, the map shows the entire Jemez WUI.</p> 
+        <div><img src="assets/fullmap.jpg" class="img-responsive fit-image">
+        <p>There are two available base layers, a topographic contour map by Mapbox, and the Google Maps aerial orthophotography with hybrid features. You can select one or the other by clicking their check box in the layer group icon <i class="fas fa-layer-group"></i>.</p>
+        <p>There are several vector layers that are immediately visible in the map (see table below). Some layers are only visible at higher <a href="https://leafletjs.com/examples/zoom-levels/" target="blank">zoom levels</a>, these include the structures, tree canopies, and Firewise defensible space buffer layers.</p>
         <p>The map defaults to a zoom level of 14 (1:35,000 scale) and ends at level 20 (1:500 scale).</p>
         <p>There is a scale bar visible in the lower left corner of the map.</p>
         <table class="table">
@@ -202,10 +174,46 @@ height: auto;
           </tbody>
         </table>
         <br>
+
+        <p>By clicking the search icon <i class="fa fa-search" aria-hidden="true"></i> in the upper right you can enter an address or a community name and the map will zoom to that location. If you're on a mobile phone, the map may ask for your location and use it to zoom in on your current location (if you're not in New Mexico, this may take you far from our area of interest).</p>
+        <p> In the layer group icon <i class="fas fa-layer-group"></i> you can turn on and off the different data layers.</p>
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Layers</th>
+              <th scope="col">Date</th>
+              <th scope="col">Resolution</th>
+              <th scope="col">Extents</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">sUAS Orthomosaics</th>
+              <td>2020</td>
+              <td>4 cm</td>
+              <td>Area 3, 7 Springs</td>
+            </tr>
+            <tr>
+              <th scope="row">sUAS Canopy Height Models</th>
+              <td>2020</td>
+              <td>25 cm</td>
+              <td>Area 3, 7 Springs</td>
+            </tr>
+            <tr>
+              <th scope="row">lidar Canopy Height Model</th>
+              <td>2016, 2018</td>
+              <td>25 cm</td>
+              <td>Jemez Mountains</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+    
         <p>Around every structure that was mapped by the <a href="https://github.com/microsoft/USBuildingFootprints" target="blank">Microsoft US building footprints</a> or by our team (by hand) you can see the buffered rings which represent the <a href="https://www.nfpa.org/Public-Education/Fire-causes-and-risks/Wildfire/Preparing-homes-for-wildfire" target="blank">Firewise defensible space</a>.</p>
         <img src="assets/7springs_chm_firewise.jpg" class="img-responsive fit-image">
         <br>
-        <p>Our Firewise defensible space is described using four distances from the visible structures, calculated in the GIS.</p>
+        <p>Firewise defensible space is described using four set distances from the structures, these were calculated in the GIS.</p>
         <table class="table">
           <thead>
             <tr>
@@ -243,7 +251,7 @@ height: auto;
           </tbody>
         </table>
         <br>
-        <p>We calculated the number of tree tops visible in both aerial lidar and the available drone data, the tree canopy spacing and the percent (%) canopy cover of the area around the strucures in that zone are reported.</p>
+        <p>We also generated an inventory of trees visible in both the aerial lidar and the available drone data, the tree canopy spacing and the percent (%) canopy cover of the trees in the areas around the structures in each zone are reported by clicking on the buffers.</p>
         <img src="assets/7springs_zoom_chm_firewise.jpg" class="img-responsive fit-image">
         <p>Navigate the map to find your home and see how dense the forest is relative to your surrounding area. Compare your home to the recommended Firewise defensible space recommendations.</p>
         </div>
