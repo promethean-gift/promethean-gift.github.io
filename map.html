@@ -135,7 +135,7 @@ body, html {
 		  zoomControl: true,
 		  attributionControl: true,
 		  center: [35.815159, -106.678401],
-		  zoom: 17,
+		  zoom: 15,
 		  zoomSnap: 0.25,
 		  layers: [basemaps.MapboxOutdoors]
 		};
@@ -363,7 +363,8 @@ body, html {
         
          // Overlay 2018 USGS Canopy Height Model layers (TMS)//
         var jemez18_chm = L.tileLayer('https://data.cyverse.org/dav-anon/iplant/home/tswetnam/jemez/leaflet/jemez_2018/{z}/{x}/{y}.png', {tms: true, opacity: 1.0, attribution: "University of Arizona 2020", minZoom: 11, maxZoom: 22});
-
+		jemez18_chm.addTo(map);
+		
         var overlay = {"7 Springs sUAS Orthomosaic": sevensprings_ortho,
  				     	"7 Springs sUAS Canopy Height Model": sevensprings_chm,
                        	"Area 3 sUAS Orthomosaic": area3_ortho,
